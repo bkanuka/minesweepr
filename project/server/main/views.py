@@ -49,8 +49,6 @@ def buttonClick():
         session['covered'] = covered
         #TODO: the above is super safe. maybe unnecessary to copy
 
-        print(grid[id_btn])
-
         if grid[id_btn] == '*':
             session['current'] = False
 
