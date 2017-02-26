@@ -3,3 +3,12 @@
 .site-content {
   padding-top: 1px;
 }
+
+.msbutton {
+    height:50px;
+    width:50px;
+    cursor:pointer;
+}
+
+.msbutton:hover {
+}

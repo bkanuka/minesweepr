@@ -4,8 +4,26 @@
 
 <div class="body-content">
   <div class="row">
-    <h1>Hello World</h1>
+    <h1>Minesweepr</h1>
   </div>
+    <table class="mstable">
+        <tbody>
+            <tr>
+                <td><input class="msbutton" type="button" id="1" value="test"/></td>
+                <td><input class="msbutton" type="button" id="2" value="test"/></td>
+                <td><input class="msbutton" type="button" value="test"/></td>
+            </tr>
+            <tr>
+                <td><input class="msbutton" type="button" value="test"/></td>
+                <td><input class="msbutton" type="button" value="test"/></td>
+                <td><input class="msbutton" type="button" value="test"/></td>
+            </tr>
+        </tbody>
+    </table>
 </div>
 
+{% endblock %}
+
+{% block js %}
+<script src="{{url_for('static', filename='msbutton.js')}}" type="text/javascript"></script>
 {% endblock %}
