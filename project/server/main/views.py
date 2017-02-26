@@ -49,9 +49,10 @@ def buttonClick():
         session['covered'] = covered
         #TODO: the above is super safe. maybe unnecessary to copy
 
-        if grid[id_btn] == -1:
+        print(grid[id_btn])
+
+        if grid[id_btn] == '*':
             session['current'] = False
-            return json.dumps({'value': '*'})
 
         return json.dumps({'value': grid[id_btn]})
     return '{}'

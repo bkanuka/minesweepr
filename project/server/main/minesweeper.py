@@ -42,6 +42,8 @@ def make_grid(m, n, k):
 
 def new_game(m, n, k):
     grid = make_grid(m, n, k).astype(int).tolist()
+    grid = [g if g != -1 else '*' for g in grid]
+
     covered = np.ones_like(grid).astype(int).tolist()
     game = {"rows": m,
             "cols": n,

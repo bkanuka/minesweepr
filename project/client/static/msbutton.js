@@ -5,7 +5,7 @@ $(document).ready(function(){
             type: "POST",
             url: "/buttonClick",
             data: { 
-                id: $(this).attr("id") // < note use of 'this' here
+                id: $(this).attr("id")
             },
             success: function(result) {
                 var result = $.parseJSON(result);
