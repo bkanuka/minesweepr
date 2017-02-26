@@ -55,5 +55,5 @@ def new_game(m, n, k):
 
 if __name__ == "__main__":
     grid = make_grid(8,8,10)
-    grid.resize((m,n))
+    grid.resize((8,8))
     print(grid)
