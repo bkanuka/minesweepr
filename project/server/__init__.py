@@ -32,6 +32,15 @@ app.config.from_object(app_settings)
 
 bootstrap = Bootstrap(app)
 
+
+###################
+### blueprints ####
+###################
+
+from project.server.main.views import main_blueprint
+app.register_blueprint(main_blueprint)
+
+
 ########################
 #### error handlers ####
 ########################
