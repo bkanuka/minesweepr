@@ -17,4 +17,18 @@ $(document).ready(function(){
             }
         });
     });
+
+    $(".newgame").click(function(e) {
+        $(".msbutton").val("");
+        $.ajax({
+            type: "POST",
+            url: "/newGame",
+            data: { 
+            },
+            success: function(result) {
+            },
+            error: function(result) {
+            }
+        });
+    });
 });

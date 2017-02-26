@@ -5,7 +5,7 @@
 #### imports ####
 #################
 
-from flask import render_template, Blueprint, request
+from flask import render_template, Blueprint, request, session
 import json
 
 
@@ -20,6 +20,11 @@ main_blueprint = Blueprint('main', __name__,)
 #### routes ####
 ################
 
+# game_metrics = {"rows": m,
+#         "cols": n,
+#         "grid": grid,
+#         "covered": covered,
+#         "current": True}
 
 @main_blueprint.route('/')
 def home():
@@ -27,5 +32,8 @@ def home():
 
 @main_blueprint.route('/buttonClick', methods=['POST'])
 def buttonClick():
-    print(request.form)
+    return json.dumps({'value': 5})
+
+@main_blueprint.route('/newGame', methods=['POST'])
+def newGame():
     return json.dumps({'value': 5})
