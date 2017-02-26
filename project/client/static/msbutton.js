@@ -9,8 +9,10 @@ $(document).ready(function(){
             },
             success: function(result) {
                 var result = $.parseJSON(result);
-                console.log(result);
-                button.val(result["value"]);
+                //console.log(result);
+                if ("value" in result) {
+                    button.val(result["value"]);
+                };
             },
             error: function(result) {
                 console.log(result);

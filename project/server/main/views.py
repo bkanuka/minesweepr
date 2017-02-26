@@ -25,30 +25,36 @@ main_blueprint = Blueprint('main', __name__,)
 #         "cols": n,
 #         "grid": grid,
 #         "covered": covered,
+#         "current": t/f
 #         }
 
 @main_blueprint.route('/')
 def home():
-    if 'grid' not in session:
+    if 'current' not in session:
         #TODO: encrypt session so not readable
         game = new_game(8,8,10)
         session.update(game)
 
-    return render_template('main/home.html', 
-            rows=session["rows"],
-            cols=session["cols"],
-            grid=session["grid"],
-            covered=session["covered"])
-    #TODO: pass kwargs as **session to get fancy
+    return render_template('main/home.html', **session)
 
 @main_blueprint.route('/buttonClick', methods=['POST'])
 def buttonClick():
-    id_btn = int(request.form['id'])
-    grid = session['grid']
-    covered = session['covered'].copy()
-    covered[id_btn] = 0
-    session['covered'] = covered
-    return json.dumps({'value': grid[id_btn]})
+    if session.get("current", False):
+        id_btn = int(request.form['id'])
+        grid = session['grid']
+
+        # Uncover button
+        covered = session['covered'].copy()
+        covered[id_btn] = 0
+        session['covered'] = covered
+        #TODO: the above is super safe. maybe unnecessary to copy
+
+        if grid[id_btn] == -1:
+            session['current'] = False
+            return json.dumps({'value': '*'})
+
+        return json.dumps({'value': grid[id_btn]})
+    return '{}'
 
 @main_blueprint.route('/newGame', methods=['POST'])
 def newGame():

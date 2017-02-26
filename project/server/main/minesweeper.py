@@ -47,6 +47,7 @@ def new_game(m, n, k):
             "cols": n,
             "grid": grid,
             "covered": covered,
+            "current": True,
             }
     return game
 
