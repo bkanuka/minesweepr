@@ -8,24 +8,39 @@
   </div>
     <table class="mstable">
         <tbody>
+            {% for i in range(rows) %}
             <tr>
-                <td><input class="msbutton" type="button" id="1" value="test"/></td>
-                <td><input class="msbutton" type="button" id="2" value="test"/></td>
-                <td><input class="msbutton" type="button" value="test"/></td>
+                {% for j in range(cols) %}
+                    {% if covered[i*rows + j] %}
+                        <td><input class="msbutton" type="button" id="{{ i*rows + j }}" value=""/></td>
+                    {% else %}
+                        <td><input class="msbutton" type="button" id="{{ i*rows + j }}" value="{{ grid[i*rows + j] }}"/></td>
+                    {% endif %}
+                {% endfor %}
             </tr>
-            <tr>
-                <td><input class="msbutton" type="button" value="test"/></td>
-                <td><input class="msbutton" type="button" value="test"/></td>
-                <td><input class="msbutton" type="button" value="test"/></td>
-            </tr>
+            {% endfor %}
         </tbody>
     </table>
 </div>
 <br>
-<div>
-    <input class="newgame" type="button" value="New Game"/>
+<div class="row">
+    <h2>New Game</h2>
 </div>
-
+<form class="form-newgame" action="/newGame" method="POST" role="form">
+    <table>
+        <tr>
+            <td><label for="rows-input" class="col-2 col-form-label">Rows</label></td>
+            <td><label for="cols-input" class="col-2 col-form-label">Columns</label></td>
+            <td><label for="mines-input" class="col-2 col-form-label">Mines</label></td>
+        </tr>
+        <tr>
+            <td><input class="form-control" type="number" value="8" name="rows-input" required></td>
+            <td><input class="form-control" type="number" value="8" name="cols-input" required></td>
+            <td><input class="form-control" type="number" value="10" name="mines-input" required></td>
+        </tr>
+    </table>
+    <input type="submit" class="btn btn-primary" id="newgame-btn" value="New Game">
+</form>
 
 {% endblock %}
 
